@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Navigator State Storage Plugin</name>
+    <groupId>com.yeremeyev.readyapi.plugins</groupId>
+    <artifactId>elementary-test-step</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
+        <readyapi-version>3.20.2-SNAPSHOT</readyapi-version>
+        <maven-assembly-plugin-version>2.4</maven-assembly-plugin-version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>eviware</id>
+            <name>ReadyAPI maven</name>
+            <url>https://rapi.tools.ops.smartbear.io/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.smartbear</groupId>
+            <artifactId>ready-api-soapui-pro</artifactId>
+            <version>${readyapi-version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.lowagie</groupId>
+                    <artifactId>itext</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.smartbear</groupId>
+                    <artifactId>ready-api-db</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.markusbernhardt</groupId>
+                    <artifactId>proxy-vole</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <outputDirectory>${user.home}/.soapui/plugins</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
